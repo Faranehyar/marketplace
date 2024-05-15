@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+
+{% block title %}The product detail{% endblock %}
+
+{% block content %}
+   <div class="card" style="width: 18rem;">
+      {% if product.image %}
+         <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+      {% else %}
+         <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+      {% endif %}
+      <div class="card-body">
+      <h5 class="card-title">{{ product.title }}</h5>
+      <p class="card-text">{{ product.price }}</p>
+      <p class="card-text">created By :{% firstof product.user.get_full_name product.user.username %}</p>
+      {% if product.description %}
+         <p class="card-text">{{ product.description}}</p>
+      {% endif %}
+      <a href="#" class="btn btn-primary">Buy</a>
+      </div>
+   </div>
+{% endblock %}
