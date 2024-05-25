@@ -14,8 +14,13 @@
       </li>
     </ul>
     <ul class="nav">
-      <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Login</a></li>
-      <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Sign up</a></li>
+      {% if request.user.is_authenticated %}
+        <li class="nav-item"><a href="{% url 'myaccount' %}" class="nav-link link-body-emphasis px-2">My Account</a></li>
+      {% else %}
+        <li class="nav-item"><a href="{% url 'login' %}" class="nav-link link-body-emphasis px-2">Login</a></li>
+        <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link link-body-emphasis px-2">Sign up</a></li>
+      {% endif %}
+
     </ul>
   </div>
 </nav>
@@ -25,8 +30,9 @@
       <svg class="bi me-2" width="40" height="32"><use xlink:href="{% url 'frontpage' %}"/></svg>
       <span class="fs-4">DevShop</span>
     </a>
-    <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-      <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+    <form class="d-flex" method="get" action="/search/">
+      <input class="form-control me-2" type="search" placeholder="Search" name="query">
+      <button class="btn btn-outline-success">Search</button>
     </form>
   </div>
 </header>
