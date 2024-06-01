@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% block title %}
+   {{ title }}
+{% endblock %}
+
+{% block content %}
+   <h1>{{ title }}</h1>
+
+   <div class="form-group">
+      <form method="post" action="." enctype="multipart/form-data">
+         {% csrf_token %}
+   
+         {{  form.as_p }}
+         
+         <button class="btn btn-primary">Submit</button>
+      </form>
+
+      {% if title == 'Edit product' %}
+         <a href="{% url 'delete_product' product.id %}" class="btn btn-danger">Delete product</a>
+      {% endif %}
+   </div>
+{% endblock %}

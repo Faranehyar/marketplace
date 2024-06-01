@@ -16,6 +16,7 @@
     <ul class="nav">
       {% if request.user.is_authenticated %}
         <li class="nav-item"><a href="{% url 'myaccount' %}" class="nav-link link-body-emphasis px-2">My Account</a></li>
+        <li class="nav-item"><a href="{% url 'my_store' %}" class="nav-link link-body-emphasis px-2">My Store</a></li>
       {% else %}
         <li class="nav-item"><a href="{% url 'login' %}" class="nav-link link-body-emphasis px-2">Login</a></li>
         <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link link-body-emphasis px-2">Sign up</a></li>
