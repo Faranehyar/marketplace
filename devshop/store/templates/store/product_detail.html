@@ -16,7 +16,7 @@
       {% if product.description %}
          <p class="card-text">{{ product.description}}</p>
       {% endif %}
-      <a href="#" class="btn btn-primary">Buy</a>
+      <a href="{% url 'add-to-cart' product.id %}" class="btn btn-primary">Add to Cart</a>
       </div>
    </div>
 {% endblock %}

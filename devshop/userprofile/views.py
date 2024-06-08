@@ -13,8 +13,11 @@ from store.models import Product
 
 def vendor_detail(request, pk):
    user = User.objects.get(pk=pk)
+   products = user.products.filter(status=Product.ACTIVE)
+   
    return render(request, 'userprofile/vendor_detail.html',{
       'user':user,
+      'products': products,
    })
 
 @login_required
@@ -44,7 +47,7 @@ def add_product(request):
    else:
       form = ProductForm()
 
-   return render (request, 'userprofile/add_product.html', {
+   return render (request, 'userprofile/product_form.html', {
       'title':'Add product',
       'form': form,
    })
@@ -66,7 +69,7 @@ def edit_product(request, pk):
    else:
       form = ProductForm(instance=product)
 
-   return render(request, 'userprofile/add_product.html', {
+   return render(request, 'userprofile/product_form.html', {
       'title':'Edit product',
       'product': product,
       'form':form,
