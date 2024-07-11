@@ -1,12 +1,16 @@
+
 {% load menu %}
 <nav class="py-2 bg-body-tertiary border-bottom">
   <div class="container d-flex flex-wrap">
-    <ul class="nav me-auto">
-      <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>
-      <li class="nav-item"><a href="{% url 'about' %}" class="nav-link link-body-emphasis px-2">About</a></li>
+    <ul class="nav ms-auto">
+      <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">کتابخانه</a></li>
+      <li class="nav-item"><a href="{% url 'about' %}" class="nav-link link-body-emphasis px-2">درباره ما</a></li>
+      <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">گالری تصاویر</a></li>
+      <li class="nav-item"><a href="{% url 'cart_view' %}" class="nav-link link-body-emphasis px-2">سبد من</a></li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Categories
+          دسته بندی
         </a>
         <ul class="dropdown-menu">
           {% menu %}
@@ -15,25 +19,29 @@
     </ul>
     <ul class="nav">
       {% if request.user.is_authenticated %}
-        <li class="nav-item"><a href="{% url 'myaccount' %}" class="nav-link link-body-emphasis px-2">My Account</a></li>
-        <li class="nav-item"><a href="{% url 'my_store' %}" class="nav-link link-body-emphasis px-2">My Store</a></li>
+        <li class="nav-item"><a href="{% url 'myaccount' %}" class="nav-link link-body-emphasis px-2">حساب کاربری</a></li>
+        <li class="nav-item"><a href="{% url 'my_store' %}" class="nav-link link-body-emphasis px-2">فروشگاه من</a></li>
+        <li class="nav-item"><a href="{% url 'myaccount' %}"   class="nav-link link-body-emphasis px-2">خروج</a></li>
+
+
       {% else %}
-        <li class="nav-item"><a href="{% url 'login' %}" class="nav-link link-body-emphasis px-2">Login</a></li>
-        <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link link-body-emphasis px-2">Sign up</a></li>
+        <li class="nav-item"><a href="{% url 'login' %}" class="nav-link link-body-emphasis px-2">ورود</a></li>
+        <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link link-body-emphasis px-2">عضویت</a></li>
       {% endif %}
 
     </ul>
   </div>
 </nav>
-<header class="py-3 mb-4 border-bottom">
-  <div class="container d-flex flex-wrap justify-content-center">
+
+<header class="py-3  border-bottom" style="margin-bottom: 0;">
+  <div class="container d-flex flex-wrap justify-content-center ">
     <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="{% url 'frontpage' %}"/></svg>
-      <span class="fs-4">DevShop</span>
+      <span class="fs-4">صفحه اصلی</span>
     </a>
     <form class="d-flex" method="get" action="/search/">
-      <input class="form-control me-2" type="search" placeholder="Search" name="query">
-      <button class="btn btn-outline-success">Search</button>
+      <input class="form-control me-2" type="search" placeholder="جستجو" name="query">
+      <button class="btn btn-outline-success">جستجو</button>
     </form>
   </div>
 </header>

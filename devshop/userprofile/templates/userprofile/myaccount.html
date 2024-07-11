@@ -4,10 +4,13 @@
 {% endblock %}
 
 {% block content %}
-   <h1>MY Account</h1>
+<div class="container">
+   <h1>حساب کاربری</h1>
 
    <form action="{% url 'logout' %}" method="POST">
       {% csrf_token %}
-      <button class="btn btn-danger" type="submit">logout</button>
+      <p>برای خروج کلیک کنید....</p>
+      <button class="btn btn-danger" type="submit">خروج</button>
    </form>
+   </div>
 {% endblock %}

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Category
 from django.db.models import Q
@@ -35,6 +36,13 @@ def cart_view(request):
     cart = Cart(request)
 
     return render(request, 'store/cart_view.html', {
+        'cart':cart
+    })
+
+@login_required
+def checkout(request):
+    cart = Cart(request)
+    return render(request, 'store/checkout.html', {
         'cart':cart
     })
 

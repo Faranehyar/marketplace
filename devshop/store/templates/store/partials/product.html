@@ -1,24 +1,32 @@
-<div class="container">
+<div class="container-fluid">
    <div class="row">
      {% for product in products %}
-     <div class="col-4">
+     <div class="col-4" style="overflow: hidden;">
        <div class="card mb-4 rounded-3 shadow-sm">
-         <div class="card-header py-3">
-           <h4 class="my-0 fw-normal">{{ product.category}}</h4>
-         </div>
-         <div class="card-body">
-           <h1 class="card-title pricing-card-title">Price : {{ product.price}}<small class="text-body-secondary fw-light">/Rials</small></h1>
+   
+         <div class="card-body overflow:hidden">
+           
+            {% if product.image %}
+             <center> <img src="{{ product.get_thumbnail }}" class="card-img-top"  style=" height: 200px; align-items: center; "  alt="..."></center>
+            {% else %}
+              <img src="https://placehold.co/600x400" class="card-img-top" style="height: 200px; align-items: center;" alt="...">
+            {% endif %}
            <ul class="list-unstyled mt-3 mb-4">
-             <li>created_at : {{ product.created_at}}</li>
-             <li>Title : {{ product.title}}</li>
-             <li>category : {{ product.category}}</li>
-             <hr>
-             <li>Description :{{ product.description }}</li>
+            <li style="color:  rgb(78, 76, 76);">موضوع : {{ product.title}}</li>
+             <li class="overflow:hidden" >توضیحات :{{ product.description }}</li>
              
+
            </ul>
-           <a class="w-100 btn btn-lg btn-outline-primary" href="{% url 'product_detail' product.category.slug product.slug %}">Details</a>
-           <hr>
-           <p><strong>Status : </strong> {{ product.get_status_display }}</p>
+           <h6 class="card-title pricing-card-title">قیمت : {{ product.price}}<small class="text-body-secondary fw-light">&nbspریال</small></h6>
+           <a class="w-100 btn btn-outline-dark" href="{% url 'product_detail' product.category.slug product.slug %}" >جزئیات</a>
+           <br><br>
+           <p style="color:  rgb(78, 76, 76); font-size: small;"><strong>وضعیت : </strong> {{ product.get_status_display }}
+            &nbsp&nbsp&nbsp<strong>دسته بندی : </strong> {{ product.category}}&nbsp&nbsp
+            
+             <strong> زمان ایجاد : </strong>{{ product.created_at}} &nbsp&nbsp
+            
+            <strong> دسته بندی : </strong>{{ product.category}}&nbsp&nbsp
+            </p>
 
          </div>
        </div>

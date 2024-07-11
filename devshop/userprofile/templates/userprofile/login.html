@@ -4,13 +4,17 @@
 {% endblock %}
 
 {% block content %}
-<h1>Login</h1>
+<div class="container">
+<h1>ورود</h1>
 
 <form method="post" action=".">
    {% csrf_token %}
 
    {{ form.as_p }}
 
-   <button class="btn btn-primary">Login</button>
+
+   <button class="btn btn-primary">ورود</button>
 </form>
+
+<p>اگر حساب کاربری ندارید روی لینک <a href="{% url 'signup' %}">کلیک کنید</a></p></div>
 {% endblock %}

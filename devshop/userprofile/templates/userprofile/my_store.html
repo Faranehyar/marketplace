@@ -4,7 +4,9 @@
 {% endblock %}
 
 {% block content %}
-   <h1>My Store</h1>
+<div class="container">
+   <br>
+   <h3>فروشگاه من</h3>
 
    {% if messages %}
       {% for message in messages %}
@@ -13,18 +15,23 @@
         </div>
       {% endfor %}
    {% endif %}
-   <a href="{% url 'add_product' %}" class="btn btn-success">Add Product</a>
+   <p>برای اضافه کردن محصول جدید از این قسمت استفاده نمایید.
+      &nbsp&nbsp<a href="{% url 'add_product' %}" class="btn btn-success">اضافه کردن محصول</a></p>
+   <br><br>
 
-   <h2>My products</h2>
+   <h2>محصولات من</h2>
+   <br>
+   <br>
 
-
+</div>
 
    {% if products %}
    {% include 'store/partials/product.html' %}
    {% else %}
       <div class="alert alert-warning" role="alert">
-         You Dont Have Any Product Yet ... 
+         شما هنوز محصولی ایجاد نکرده اید .....
       </div>
+      
    {% endif %}
     
 {% endblock %}
